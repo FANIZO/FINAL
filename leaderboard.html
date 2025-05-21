@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>📊 Leaderboard</title>
+  <style>
+    body {
+      background: black;
+      color: lime;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 10%;
+    }
+    button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>📊 Leaderboard</h1>
+  <p>End of game! Your score and others appear here.</p>
+  <div style="margin-top: 40px;">
+    <button onclick="resetLeaderboard()">🧨 Reset Leaderboard</button>
+  </div>
+  <script>
+    function resetLeaderboard() {
+      if (confirm("Are you sure you want to clear all leaderboard data?")) {
+        fetch("https://break-me-if-you-can-default-rtdb.asia-southeast1.firebasedatabase.app/players.json", {
+          method: "DELETE"
+        }).then(() => {
+          alert("Leaderboard has been reset.");
+          location.reload();
+        });
+      }
+    }
+  </script>
+</body>
+</html>
